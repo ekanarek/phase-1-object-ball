@@ -119,8 +119,7 @@ function numPointsScored(name) {
   const game = gameObject();
 
   for (const teamKey in game) {
-    const team = game[teamKey];
-    const players = team["players"];
+    const players = game[teamKey].players;
 
     for (playerName in players) {
       if (playerName === name) {
@@ -134,8 +133,7 @@ function shoeSize(name) {
   const game = gameObject();
 
   for (const teamKey in game) {
-    const team = game[teamKey];
-    const players = team["players"];
+    const players = game[teamKey].players;
 
     for (playerName in players) {
       if (playerName === name) {
@@ -190,8 +188,7 @@ function playerStats(name) {
   const game = gameObject();
 
   for (const teamKey in game) {
-    const team = game[teamKey];
-    const players = team["players"];
+    const players = game[teamKey].players;
     for (const player in players) {
       if (player === name) {
         return players[player];
@@ -200,4 +197,23 @@ function playerStats(name) {
   }
 }
 
-console.log(playerStats("Bismak Biyombo"))
+function bigShoeRebounds() {
+  const game = gameObject();
+  let largestShoe = 0;
+  let biggestPlayer = null;
+
+  for (const teamKey in game) {
+    const players = game[teamKey].players;
+
+    for (const playerName in players) {
+      const player = players[playerName];
+
+      if (player.shoe > largestShoe) {
+        largestShoe = player.shoe;
+        biggestPlayer = player;
+      }
+    }
+  }
+
+  return biggestPlayer.rebounds;
+}
