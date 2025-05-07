@@ -185,3 +185,19 @@ function playerNumbers(teamName) {
   }
   return numbers;
 }
+
+function playerStats(name) {
+  const game = gameObject();
+
+  for (const teamKey in game) {
+    const team = game[teamKey];
+    const players = team["players"];
+    for (const player in players) {
+      if (player === name) {
+        return players[player];
+      }
+    }
+  }
+}
+
+console.log(playerStats("Bismak Biyombo"))
