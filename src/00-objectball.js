@@ -1,5 +1,5 @@
 function gameObject() {
-    const game = {
+    return {
         "home": {
             "teamName": "Brooklyn Nets",
             "colors": ["Black", "White"],
@@ -113,7 +113,19 @@ function gameObject() {
             }
         }, 
     }
-    return game;
 }
 
-console.log(gameObject());
+function numPointsScored(name) {
+    const game = gameObject();
+
+    for (const teamKey in game) {
+        const team = game[teamKey];
+        const players = team["players"];
+
+        for (playerName in players) {
+            if (playerName === name) {
+                return players[playerName].points;
+            }
+        }
+    }
+}
