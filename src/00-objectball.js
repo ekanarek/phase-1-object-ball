@@ -168,3 +168,20 @@ function teamNames() {
 
   return teamNames;
 }
+
+function playerNumbers(teamName) {
+  const game = gameObject();
+  const numbers = [];
+
+  for (const teamKey in game) {
+    const team = game[teamKey];
+
+    if (team.teamName === teamName) {
+      const players = team["players"];
+      for (const player in players) {
+        numbers.push(players[player].number);
+      }
+    }
+  }
+  return numbers;
+}
