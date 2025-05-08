@@ -244,7 +244,7 @@ function mostPointsScored() {
 function winningTeam() {
   const game = gameObject();
   let winningScore = 0;
-  let winner = null;
+  let winner;
 
   for (const teamKey in game) {
     const players = game[teamKey].players;
@@ -260,4 +260,21 @@ function winningTeam() {
   }
 
   return winner;
+}
+
+function playerWithLongestName() {
+  const game = gameObject();
+  let longestNameSplit = [];
+
+  for (const teamKey in game) {
+    const players = game[teamKey].players;
+
+    for (const playerName in players) {
+      const splitName = playerName.split("");
+      if (splitName.length > longestNameSplit.length) {
+        longestNameSplit = splitName;
+      }
+    }
+  }
+  return longestNameSplit.join("");
 }
