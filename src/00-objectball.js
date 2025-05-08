@@ -217,3 +217,26 @@ function bigShoeRebounds() {
 
   return biggestPlayer.rebounds;
 }
+
+// Bonus Questions
+
+function mostPointsScored() {
+  const game = gameObject();
+  let mostPoints = 0;
+  let highestScoringPlayer = null;
+
+  for (const teamKey in game) {
+    const players = game[teamKey].players;
+
+    for (const playerName in players) {
+      const player = players[playerName];
+
+      if (player.points > mostPoints) {
+        mostPoints = player.points;
+        highestScoringPlayer = playerName;
+      }
+    }
+  }
+
+  return highestScoringPlayer;
+}
