@@ -240,3 +240,24 @@ function mostPointsScored() {
 
   return highestScoringPlayer;
 }
+
+function winningTeam() {
+  const game = gameObject();
+  let winningScore = 0;
+  let winner = null;
+
+  for (const teamKey in game) {
+    const players = game[teamKey].players;
+    let totalScore = 0;
+
+    for (const playerName in players) {
+      totalScore += players[playerName].points;
+    }
+    if (totalScore > winningScore) {
+      winningScore = totalScore;
+      winner = game[teamKey].teamName;
+    }
+  }
+
+  return winner;
+}
