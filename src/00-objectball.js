@@ -278,3 +278,25 @@ function playerWithLongestName() {
   }
   return longestNameSplit.join("");
 }
+
+// Super Bonus
+
+function doesLongNameStealATon() {
+  const game = gameObject();
+  const longestName = playerWithLongestName();
+  let mostSteals = 0;
+  let highestStealingPlayer = null;
+
+  for (const teamKey in game) {
+    const players = game[teamKey].players;
+
+    for (const playerName in players) {
+      const player = players[playerName] 
+        if (player.steals > mostSteals) {
+          mostSteals = player.steals;
+          highestStealingPlayer = playerName;
+        }
+      }
+    }
+    return longestName === highestStealingPlayer ? true : false
+  }
